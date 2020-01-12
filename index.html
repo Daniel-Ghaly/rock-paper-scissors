@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<script> 
+
+
+let optionsArray = ["rock", "paper", "scissors"]
+let computer_total = 0;
+let player_total = 0;
+
+function game()
+
+{
+    while (player_total < 3 && computer_total < 3)
+    {
+        playRound();
+    }
+
+     if (player_total || computer_total == 3)
+{
+    if (player_total == 3) {
+        alert("You win best out of 5! \nYour score: " + player_total + "\nComputer score: " + computer_total)
+
+    }
+    else if (computer_total == 3) {alert("You lose the best out of 5 :(\nYour score: " + player_total + "\nComputer score: " + computer_total)}
+
+}
+
+window.location.reload();
+
+
+function playRound()
+{
+    playerSelection = prompt("Type out an option: rock, paper, or scissors?").toLowerCase();
+    computerSelection = optionsArray[Math.floor(Math.random()*optionsArray.length)].toLowerCase();
+   
+     if (playerSelection == "rock" && computerSelection == "rock")
+       {alert("Computer says.... rock! It's a tie!\nYour score: " + player_total + "\nComputer score: " + computer_total)}
+    else if (playerSelection == "rock" && computerSelection == "scissors")
+        {
+            player_total += 1
+            alert("You win! Rock beats scissors!\nYour score: " + player_total + "\nComputer score: " + computer_total)
+        }
+       
+    
+    else if (playerSelection == "rock" && computerSelection == "paper")
+        {
+            computer_total += 1
+
+            alert("You lose! Paper beats rock!\nYour score: " + player_total + "\nComputer score: " + computer_total)
+}
+
+
+
+    else if (playerSelection == "paper" && computerSelection == "rock")
+        {
+            player_total += 1
+
+            alert("You win! Paper beats rock!\nYour score: " + player_total + "\nComputer score: " + computer_total)
+}
+
+    else if (playerSelection == "paper" && computerSelection == "scissors")
+        {
+            computer_total += 1
+
+            alert("You lose! Scissors beats paper!\nYour score: " + player_total + "\nComputer score: " + computer_total)
+}
+
+    else if (playerSelection == "paper" && computerSelection == "paper")
+        {alert("Computer says.... paper! It's a tie!\nYour score: " + player_total + "\nComputer score: " + computer_total)}
+
+     else if (playerSelection == "scissors" && computerSelection == "paper")
+        {
+            computer_total += 1
+
+            alert("You win! Scissors beats paper!\nYour score: " + player_total + "\nComputer score: " + computer_total)
+}
+
+
+    else if (playerSelection == "scissors" && computerSelection == "scissors")
+        {alert("Computer says.... scissors! It's a tie!\nYour score: " + player_total + "\nComputer score: " + computer_total)}
+
+    else if (playerSelection == "scissors" && computerSelection == "rock")
+        {
+            computer_total += 1
+
+            alert("You lose! Rock beats scissors!\nYour score: " + player_total + "\nComputer score: " + computer_total)
+        
+}
+        
+    else if (playerSelection != "scissors" || "rock" || "scissors")
+    {
+        alert("Invalid option...Check your spelling!")
+    }
+
+ 
+
+}
+}
+
+console.log(game())
+
+</script>
