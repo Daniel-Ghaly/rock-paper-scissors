@@ -1,39 +1,454 @@
 <!DOCTYPE html>
-<html>
 
 <head>
-    <title>Rock-Paper-Scissors!</title>
+
+    <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
 
 
 </head>
+ 
 
-</html>
+<body>
+    <div id = "icon-container" >
+    <div id = "icons" >
+    <button class = "button-container" id="rock" value = "rock">Rock</button>
+    <button class = "button-container" id="paper" value = "paper">Paper</button>
+    <button class = "button-container" id="scissors" value = "scissors">Scissors</button>
+    </div>
+    </div>
+
+    <div id="container">
+    </div>
+    
+
+
+
+</body>
+
 <script> 
 
 
 let optionsArray = ["rock", "paper", "scissors"]
-let computer_total = 0;
-let player_total = 0;
+let computer_score = 0;
+let player_score = 0;
 
-function game()
 
-{
-    while (player_total < 3 && computer_total < 3)
+
+const container = document.querySelector('#container');
+const h1 = document.createElement('h1')
+const rock_btn = document.querySelector('#rock');
+const paper_btn = document.querySelector('#paper')
+const scissors_btn = document.querySelector('#scissors')
+
+
+const reset_btn = document.createElement("button");
+reset_btn.classList.add("resetButton")
+reset_btn.innerHTML = "Play Again!";
+
+
+reset_btn.addEventListener("click", function() {
+
+    player_score = 0
+    computer_score = 0
+    container.removeChild(container.childNodes[0])
+    document.body.removeChild(reset_btn)
+
+
+});
+
+
+
+rock_btn.addEventListener('click', function (e) {
+  playerSelection = e.target.value;
+  computerSelection = optionsArray[Math.floor(Math.random()*optionsArray.length)];
+
+container.appendChild(h1)
+
+
+  if (player_score < 3 && computer_score < 3)
     {
         playRound();
     }
 
-     if (player_total || computer_total == 3)
-{
-    if (player_total == 3) {
-        alert("You win best out of 5! \nYour score: " + player_total + "\nComputer score: " + computer_total)
+     if (player_score == 3 || computer_score == 3) {
+
+
+    if (player_score == 3) {
+
+        h1.innerHTML += "<br><br>You won best out of 5!"
+        container.appendChild(h1);
+        player_score += 1;
 
     }
-    else if (computer_total == 3) {alert("You lose the best out of 5 :(\nYour score: " + player_total + "\nComputer score: " + computer_total)}
+    else if (computer_score == 3) {
+
+        h1.innerHTML += "<br><br>You lost best out of 5 :("
+         container.appendChild(h1);     
+         computer_score += 1;     
+        }
+
+        document.body.appendChild(reset_btn)
+
+
+}
+
+});
+
+
+paper_btn.addEventListener('click', function (e) {
+  playerSelection = e.target.value;
+  computerSelection = optionsArray[Math.floor(Math.random()*optionsArray.length)];
+
+  container.appendChild(h1)
+
+
+  if (player_score < 3 && computer_score < 3)
+    {
+        playRound();
+    }
+
+     if (player_score == 3|| computer_score == 3)
+{
+    if (player_score == 3) {
+
+
+        h1.innerHTML += "<br><br>You won best out of 5!"
+        container.appendChild(h1);
+        player_score += 1;
+
+    }
+    else if (computer_score == 3) {
+
+        h1.innerHTML += "<br><br>You lost best out of 5 :("
+         container.appendChild(h1);
+         computer_score +=1       
+        }
+
+document.body.appendChild(reset_btn)
+
+
+
+}
+
+});
+
+scissors_btn.addEventListener('click', function (e) {
+  playerSelection = e.target.value;
+  computerSelection = optionsArray[Math.floor(Math.random()*optionsArray.length)];
+
+  container.appendChild(h1)
+
+
+  if (player_score < 3 && computer_score < 3)
+    {
+        playRound();
+    }
+
+     if (player_score == 3 || computer_score == 3)
+{
+    if (player_score == 3) {
+
+        console.log(player_score)
+
+        h1.innerHTML += "<br><br>You won best out of 5!"
+        container.appendChild(h1);
+        player_score += 1;
+
+    }
+    else if (computer_score == 3) {
+
+        h1.innerHTML += "<br><br>You lost best out of 5 :("
+         container.appendChild(h1);     
+         computer_score +=1     
+        }
+
+document.body.appendChild(reset_btn)
+
+
+
+}
+
+});
+
+
+
+
+function playRound() {
+
+
+  if (playerSelection == "rock" && computerSelection == "rock")
+
+{
+
+  
+  container.removeChild(container.childNodes[0])
+  h1.innerHTML = "Computer says.... rock! It's a tie!<br>Your score: " + player_score + "<br>Computer score: " + computer_score;
+  container.appendChild(h1);
+  
+
+}
+     
+  else if (playerSelection == "rock" && computerSelection == "scissors")
+      {
+          container.removeChild(container.childNodes[0])
+
+          player_score += 1
+          h1.innerHTML = "You win! Rock beats scissors!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+          container.appendChild(h1);
+      }
+     
+  
+  else if (playerSelection == "rock" && computerSelection == "paper")
+      {
+          container.removeChild(container.childNodes[0])
+
+          computer_score += 1
+
+          h1.innerHTML = "You lose! Paper beats rock!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+          container.appendChild(h1);
+
+}
+
+
+
+  else if (playerSelection == "paper" && computerSelection == "rock")
+      {
+          container.removeChild(container.childNodes[0])
+
+          player_score += 1
+
+          h1.innerHTML = "You win! Paper beats rock!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+          container.appendChild(h1);
+
+}
+
+  else if (playerSelection == "paper" && computerSelection == "scissors")
+      {
+          container.removeChild(container.childNodes[0])
+
+          computer_score += 1
+
+          h1.innerHTML = "You lose! Scissors beats paper!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+          container.appendChild(h1);
+
+}
+
+  else if (playerSelection == "paper" && computerSelection == "paper")
+      {
+          container.removeChild(container.childNodes[0])
+
+          h1.innerHTML = "Computer says.... paper! It's a tie!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+      container.appendChild(h1);
+
+      }
+
+   else if (playerSelection == "scissors" && computerSelection == "paper")
+      {
+          container.removeChild(container.childNodes[0])
+
+          computer_score += 1
+
+          h1.innerHTML = "You win! Scissors beats paper!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+          container.appendChild(h1);
+
+}
+
+
+  else if (playerSelection == "scissors" && computerSelection == "scissors")
+      {       container.removeChild(container.childNodes[0])
+
+          h1.innerHTML = "Computer says.... scissors! It's a tie!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+      container.appendChild(h1);
+      }
+
+  else if (playerSelection == "scissors" && computerSelection == "rock")
+      {
+          container.removeChild(container.childNodes[0])
+
+          computer_score += 1
+
+          h1.innerHTML = "You lose! Rock beats scissors!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+          container.appendChild(h1);
+
+      
+}
+
+}
+
+
+
+
+
+
+/*
+
+    while (player_score < 3 && computer_score < 3)
+    {
+        playRound();
+    }
+
+     if (player_score || computer_score == 3)
+{
+    if (player_score == 3) {
+
+        console.log(player_score)
+
+        container.removeChild(container.childNodes[0])
+         h1.innerHTML = "You win best out of 5! <br>Your score: " + player_score + "<br>Computer score: " + computer_score;
+         container.appendChild(h1);
+
+    }
+    else if (computer_score == 3) {
+        
+        container.removeChild(container.childNodes[0])
+         h1.innerHTML = "You lose the best out of 5 :(<br>Your score: " + player_score + "<br>Computer score: " + computer_score;
+         container.appendChild(h1);          
+        }
+
+
+      
+  
+
+
+
+
+
+
+
+
+
+ /* function playRound() {
+
+    if (playerSelection == "rock" && computerSelection == "rock")
+
+{
+
+  
+  container.removeChild(container.childNodes[0])
+  h1.innerHTML = "Computer says.... rock! It's a tie!<br>Your score: " + player_score + "<br>Computer score: " + computer_score;
+  container.appendChild(h1);
+  
+  console.log(player_score)
+
+
+}
+     
+  else if (playerSelection == "rock" && computerSelection == "scissors")
+      {
+          container.removeChild(container.childNodes[0])
+
+          player_score += 1
+          h1.innerHTML = "You win! Rock beats scissors!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+          container.appendChild(h1);
+      }
+     
+  
+  else if (playerSelection == "rock" && computerSelection == "paper")
+      {
+          container.removeChild(container.childNodes[0])
+
+          computer_score += 1
+
+          h1.innerHTML = "You lose! Paper beats rock!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+          container.appendChild(h1);
+
+}
+
+
+
+  else if (playerSelection == "paper" && computerSelection == "rock")
+      {
+          container.removeChild(container.childNodes[0])
+
+          player_score += 1
+
+          h1.innerHTML = "You win! Paper beats rock!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+          container.appendChild(h1);
+
+}
+
+  else if (playerSelection == "paper" && computerSelection == "scissors")
+      {
+          container.removeChild(container.childNodes[0])
+
+          computer_score += 1
+
+          h1.innerHTML = "You lose! Scissors beats paper!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+          container.appendChild(h1);
+
+}
+
+  else if (playerSelection == "paper" && computerSelection == "paper")
+      {
+          container.removeChild(container.childNodes[0])
+
+          h1.innerHTML = "Computer says.... paper! It's a tie!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+      container.appendChild(h1);
+
+      }
+
+   else if (playerSelection == "scissors" && computerSelection == "paper")
+      {
+          container.removeChild(container.childNodes[0])
+
+          computer_score += 1
+
+          h1.innerHTML = "You win! Scissors beats paper!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+          container.appendChild(h1);
+
+}
+
+
+  else if (playerSelection == "scissors" && computerSelection == "scissors")
+      {       container.removeChild(container.childNodes[0])
+
+          h1.innerHTML = "Computer says.... scissors! It's a tie!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+      container.appendChild(h1);
+      }
+
+  else if (playerSelection == "scissors" && computerSelection == "rock")
+      {
+          container.removeChild(container.childNodes[0])
+
+          computer_score += 1
+
+          h1.innerHTML = "You lose! Rock beats scissors!<br>Your score: " + player_score + "<br>Computer score: " + computer_score
+          container.appendChild(h1);
+
+      
+}
+      
+*/
+
+
+
+
+
+
+/* function game()
+
+{
+    while (player_score < 3 && computer_score < 3)
+    {
+        playRound();
+    }
+
+     if (player_score || computer_score == 3)
+{
+    if (player_score == 3) {
+        alert("You win best out of 5! <br>Your score: " + player_score + "<br>Computer score: " + computer_score)
+
+    }
+    else if (computer_score == 3) {alert("You lose the best out of 5 :(<br>Your score: " + player_score + "<br>Computer score: " + computer_score)}
 
 }
 
 window.location.reload();
+
+
+
 
 
 function playRound()
@@ -42,56 +457,56 @@ function playRound()
     computerSelection = optionsArray[Math.floor(Math.random()*optionsArray.length)].toLowerCase();
    
      if (playerSelection == "rock" && computerSelection == "rock")
-       {alert("Computer says.... rock! It's a tie!\nYour score: " + player_total + "\nComputer score: " + computer_total)}
+       {alert("Computer says.... rock! It's a tie!<br>Your score: " + player_score + "<br>Computer score: " + computer_score)}
     else if (playerSelection == "rock" && computerSelection == "scissors")
         {
-            player_total += 1
-            alert("You win! Rock beats scissors!\nYour score: " + player_total + "\nComputer score: " + computer_total)
+            player_score += 1
+            alert("You win! Rock beats scissors!<br>Your score: " + player_score + "<br>Computer score: " + computer_score)
         }
        
     
     else if (playerSelection == "rock" && computerSelection == "paper")
         {
-            computer_total += 1
+            computer_score += 1
 
-            alert("You lose! Paper beats rock!\nYour score: " + player_total + "\nComputer score: " + computer_total)
+            alert("You lose! Paper beats rock!<br>Your score: " + player_score + "<br>Computer score: " + computer_score)
 }
 
 
 
     else if (playerSelection == "paper" && computerSelection == "rock")
         {
-            player_total += 1
+            player_score += 1
 
-            alert("You win! Paper beats rock!\nYour score: " + player_total + "\nComputer score: " + computer_total)
+            alert("You win! Paper beats rock!<br>Your score: " + player_score + "<br>Computer score: " + computer_score)
 }
 
     else if (playerSelection == "paper" && computerSelection == "scissors")
         {
-            computer_total += 1
+            computer_score += 1
 
-            alert("You lose! Scissors beats paper!\nYour score: " + player_total + "\nComputer score: " + computer_total)
+            alert("You lose! Scissors beats paper!<br>Your score: " + player_score + "<br>Computer score: " + computer_score)
 }
 
     else if (playerSelection == "paper" && computerSelection == "paper")
-        {alert("Computer says.... paper! It's a tie!\nYour score: " + player_total + "\nComputer score: " + computer_total)}
+        {alert("Computer says.... paper! It's a tie!<br>Your score: " + player_score + "<br>Computer score: " + computer_score)}
 
      else if (playerSelection == "scissors" && computerSelection == "paper")
         {
-            computer_total += 1
+            computer_score += 1
 
-            alert("You win! Scissors beats paper!\nYour score: " + player_total + "\nComputer score: " + computer_total)
+            alert("You win! Scissors beats paper!<br>Your score: " + player_score + "<br>Computer score: " + computer_score)
 }
 
 
     else if (playerSelection == "scissors" && computerSelection == "scissors")
-        {alert("Computer says.... scissors! It's a tie!\nYour score: " + player_total + "\nComputer score: " + computer_total)}
+        {alert("Computer says.... scissors! It's a tie!<br>Your score: " + player_score + "<br>Computer score: " + computer_score)}
 
     else if (playerSelection == "scissors" && computerSelection == "rock")
         {
-            computer_total += 1
+            computer_score += 1
 
-            alert("You lose! Rock beats scissors!\nYour score: " + player_total + "\nComputer score: " + computer_total)
+            alert("You lose! Rock beats scissors!<br>Your score: " + player_score + "<br>Computer score: " + computer_score)
         
 }
         
@@ -103,8 +518,13 @@ function playRound()
  
 
 }
-}
+} */
 
-console.log(game())
 
 </script>
+
+ 
+
+
+
+
