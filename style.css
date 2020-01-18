@@ -1,0 +1,46 @@
+html, body {margin:0;padding:0;height:100%;width: 100%;text-align: center;}
+
+.button-container {
+   font-size: 18px;
+   border: 2px solid #AD235F;
+   border-radius: 100px;
+   width: 150px;
+   height: 150px;
+   margin-left: 45px;
+
+}
+
+button:focus {outline:0;}
+.button-container:hover {box-shadow: 0 0 3pt 2pt #AD235F;
+}
+
+#icons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#icon-container {
+    padding-top: 200px;
+    display: flex;
+    align-items: center;
+
+}
+
+.resetButton {
+	background-color:#AD235F;
+	border-radius:28px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+}
+.resetButton:hover {
+	background-color:rgb(133, 8, 62);
+}
+
+
+        
